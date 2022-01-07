@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hello World</title>
+    <url>/2022/01/07/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>yarn常用命令</title>
+    <url>/2022/01/07/yarn%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p>yarn安装</p>
+<p>npm i yarn -g</p>
+<p>查看版本</p>
+<p>Yarn -v</p>
+<span id="more"></span>
+<h2 id="1、开始一个新工程"><a href="#1、开始一个新工程" class="headerlink" title="1、开始一个新工程"></a>1、开始一个新工程</h2><p>yarn init 与 npm init 一样通过交互式会话创建一个 package.json</p>
+<p>yarn init # yarn</p>
+<p>跳过会话，直接通过默认值生成 package.json</p>
+<p>yarn init –yes # 简写 -y</p>
+<h2 id="2、添加一个依赖"><a href="#2、添加一个依赖" class="headerlink" title="2、添加一个依赖"></a>2、添加一个依赖</h2><p>通过 yarn add 添加依赖会更新 package.json 以及 yarn.lock 文件</p>
+<p>1).开发环境</p>
+<p>yarn add  packageName  依赖会记录在 package.json 的 dependencies 下 开发环境</p>
+<p>yarn add <a href="mailto:&#119;&#101;&#x62;&#112;&#x61;&#x63;&#107;&#x40;&#x32;&#46;&#51;&#x2e;&#x33;">&#119;&#101;&#x62;&#112;&#x61;&#x63;&#107;&#x40;&#x32;&#46;&#51;&#x2e;&#x33;</a> # yarn –save 是 yarn 默认的，默认记录在 package.json 中</p>
+<p>2).生产环境</p>
+<p>yarn add  packageName  –dev 依赖会记录在 package.json 的 devDependencies 下生产环境</p>
+<p>yarn add webpack –dev # yarn 简写 -D</p>
+<p>3).全局</p>
+<p>yarn global add  packageName  全局安装依赖</p>
+<p>yarn global add webpack # yarn</p>
+<h2 id="3、更新一个依赖"><a href="#3、更新一个依赖" class="headerlink" title="3、更新一个依赖"></a>3、更新一个依赖</h2><p>yarn upgrade 用于更新包到基于规范范围的最新版本</p>
+<h2 id="4、移除一个依赖"><a href="#4、移除一个依赖" class="headerlink" title="4、移除一个依赖"></a>4、移除一个依赖</h2><p>yarn remove</p>
+<h2 id="5、安装-package-json-中的所有文件"><a href="#5、安装-package-json-中的所有文件" class="headerlink" title="5、安装 package.json 中的所有文件"></a>5、安装 package.json 中的所有文件</h2><p>yarn 或者 yarn install</p>
+<h2 id="6、运行脚本"><a href="#6、运行脚本" class="headerlink" title="6、运行脚本"></a>6、运行脚本</h2><p>yarn run 用来执行在 package.json 中 scripts 属性下定义的脚本</p>
+<p>// package.json<br>{<br>  “scripts”: {<br>      “dev”: “node app.js”,<br>      “start”: “node app.js”<br>  }<br>}</p>
+<p>yarn run dev # yarn 执行 dev 对应的脚本 node app.js</p>
+<h2 id="7、显示某个包信息"><a href="#7、显示某个包信息" class="headerlink" title="7、显示某个包信息"></a>7、显示某个包信息</h2><p>yarn info <packageName> 可以用来查看某个模块的最新版本信息</p>
+<h2 id="8、列出项目的所有依赖"><a href="#8、列出项目的所有依赖" class="headerlink" title="8、列出项目的所有依赖"></a>8、列出项目的所有依赖</h2><p>yarn list # 列出当前项目的依赖</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>公众号网页开发</title>
+    <url>/2022/01/07/%E5%85%AC%E4%BC%97%E5%8F%B7%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<h2 id="可能需要的一些资源："><a href="#可能需要的一些资源：" class="headerlink" title="可能需要的一些资源："></a>可能需要的一些资源：</h2><p>微信公众号开发文档：<a href="https://developers.weixin.qq.com/doc/offiaccount/Getting_Started/Overview.html">https://developers.weixin.qq.com/doc/offiaccount/Getting_Started/Overview.html</a><br>JS-SDK：<a href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html">https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html</a><br>接口在线调试：<a href="https://mp.weixin.qq.com/debug/">https://mp.weixin.qq.com/debug/</a><br>weui预览：<a href="https://weui.io/">https://weui.io/</a><br>weui仓库地址：<a href="https://github.com/Tencent/weui">https://github.com/Tencent/weui</a><br>weui.js仓库地址：<a href="https://github.com/Tencent/weui.js">https://github.com/Tencent/weui.js</a></p>
+<span id="more"></span>
+<h2 id="一、注册公众号"><a href="#一、注册公众号" class="headerlink" title="一、注册公众号"></a>一、注册公众号</h2><p>注册地址：<a href="https://mp.weixin.qq.com/">https://mp.weixin.qq.com/</a><br>分为订阅号和服务号，前者申请简单，后者需要企业信息，前期开发可以申请测试号，申请简单且有大部分接口权限</p>
+<h3 id="测试号配置："><a href="#测试号配置：" class="headerlink" title="测试号配置："></a>测试号配置：</h3><h4 id="接口配置信息-URL"><a href="#接口配置信息-URL" class="headerlink" title="接口配置信息 URL"></a>接口配置信息 URL</h4><p>这个只作为微信服务器验证所需网址，此地址需要正确接收微信发送的请求并按照规则返回数据，这个URL可以部署在自己的服务器，没有自己的服务器可以部署在本地，不过这样的话需要进行网络映射，保证外网可以访问本地服务<br>网络映射推荐花生壳和ngrox，教程自行百度</p>
+<h4 id="接口配置信息-Token"><a href="#接口配置信息-Token" class="headerlink" title="接口配置信息 Token"></a>接口配置信息 Token</h4><p>随便填写，只需要和验证时Token一致即可</p>
+<h4 id="JS接口安全域名"><a href="#JS接口安全域名" class="headerlink" title="JS接口安全域名"></a>JS接口安全域名</h4><p>即我们访问微信接口时所在的域名<br>测试号申请地址：<a href="https://mp.weixin.qq.com/debug/cgi-bin/sandboxinfo?action=showinfo&amp;t=sandbox/index">https://mp.weixin.qq.com/debug/cgi-bin/sandboxinfo?action=showinfo&amp;t=sandbox/index</a></p>
+<h2 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h2><p><strong>1、获取access_token或者请求其他微信接口时跨域？</strong><br>前端无法直接和微信服务器进行交互，可以让后端来获取所需要的数据，再通过接口传递到前端<br><strong>2、JS-SDK？</strong><br>微信JS-SDK是微信公众平台 面向网页开发者提供的基于微信内的网页开发工具包。<br>通过使用微信JS-SDK，网页开发者可借助微信高效地使用拍照、选图、语音、位置等手机系统的能力，同时可以直接使用微信分享、扫一扫、卡券、支付等微信特有的能力，为微信用户提供更优质的网页体验。<br>简单的说，就是提供了很多在微信里面可以使用的接口，很好用，唯一的缺点就是官方文档不是很详尽，有些地方存在小坑<br><strong>3、在哪里查看页面效果？/测试页面在哪里运行？</strong><br>如果使用了JS-SDK，需要在微信环境下运行，可以使用微信开发者工具在网址栏输入自己的页面地址进行查看。不过我在调试的时候模拟器还在出现了定位不精准的问题。这时可以使用工具右上角预览，扫描二维码在手机上查看。<br><strong>4、修改了代码但是页面还是没发生变化/功能没出来？</strong><br>试试工具右上角清理缓存<br><strong>5、weui和weui.js的引入</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// weui</span></span><br><span class="line">&lt;link rel=<span class="string">&quot;stylesheet&quot;</span> href=<span class="string">&quot;https://res.wx.qq.com/open/libs/weui/1.1.3/weui.min.css&quot;</span>&gt;</span><br><span class="line"><span class="comment">// weui.js</span></span><br><span class="line">&amp;lt;script type=<span class="string">&quot;text/javascript&quot;</span> src=<span class="string">&quot;https://res.wx.qq.com/open/libs/weuijs/1.1.4/weui.min.js&quot;</span>&amp;gt;&amp;lt;/script&amp;gt;</span><br></pre></td></tr></table></figure>
+<p>使用文档可以在weui的github里找到<br><strong>6、图像接口无法上传多张图片？</strong><br><a href="https://blog.csdn.net/wangliqiang1014/article/details/78071098">https://blog.csdn.net/wangliqiang1014/article/details/78071098</a><br><strong>7、不想使用微信提供的地图展示接口？/想在页面插入小地图？</strong><br>微信提供的wx.openLocation接口只能新打开一个页面全屏展示地图，我们可以引入并使用百度地图或者高德地图<br>我使用的是微信接口获取经纬度，再使用百度提供的接口进行经纬度转化，最后在页面上展示一个小的百度地图<br><strong>8、怎么使用JS-SDK？</strong><br>首先要在页面注入配置信息wx.config。这个前端也获取不了，可以让后端拿到之后通过接口传递到前端。<br>其次是wx.ready。wx.config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。<br>最后是wx.error。wx.config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。</p>
+<hr>
+<p>最后，这些是我写了一个公众号页面之后总结的一些方法和坑，可能以后还会用到，如果能帮到你那就更好了。很多东西暂时没想起来，想起来的时候再补充。不对的地方希望大家指正，共同进步，谢谢</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>我的第一篇博客</title>
+    <url>/2022/01/06/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h1 id="第一篇博客！"><a href="#第一篇博客！" class="headerlink" title="第一篇博客！"></a>第一篇博客！</h1><hr>
+<p>这是一篇用来测试的博客！</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>有感集</title>
+    <url>/2022/01/07/%E6%9C%89%E6%84%9F%E9%9B%86/</url>
+    <content><![CDATA[<p>不愔人间事 浑然自成境</p>
+<hr>
+<p>不如意事常八九，可与语人无二三</p>
+<hr>
+<span id="more"></span>
+
+<p>人生不如意事十之八九，失败更是常态，所以成功愈显珍贵</p>
+<hr>
+<p>在泪水里浸湿过的长吻 常让我想呀想出神</p>
+<hr>
+<p>看飞机轰的一声去远乡</p>
+<hr>
+<p>剔银灯·与欧阳公席上分题</p>
+<p>昨夜因看蜀志。笑曹操、孙权、刘备。用尽机关，徒劳心力，只得三分天地。屈指细寻思，争如共、刘伶一醉。<br>人世都无百岁。少痴騃、老成尫悴。只有中间，些子少年，忍把浮名牵系。一品与千金，问白发、如何回避。</p>
+<hr>
+<p>黄眉妖言</p>
+<p>不杀生，仇恨永无止息。<br>不偷盗，强弱与我何异。<br>不邪淫，一切有情皆孽。<br>不妄语，梦幻泡影虚空。<br>不馋酒，忧怖涨落无常。<br>不耽乐，芳华刹那而已。<br>不贪眠，苦苦不得解脱。<br>不纵欲，诸行了无生趣。</p>
+<hr>
+<p>皎皎人间月，灼灼天上星</p>
+<hr>
+<p>止血符</p>
+<p>日出东方一点油，手提金鞭倒骑牛。<br>三口喝断长江水，止住红门血不流。</p>
+<hr>
+<p>好一似食尽鸟投林，落了片白茫茫大地真干净！</p>
+<p>摘自《红楼梦》第五回</p>
+<hr>
+<p>望江南·超然台作</p>
+<p>【作者】苏轼 【朝代】宋</p>
+<p>春未老，风细柳斜斜。试上超然台上望，半壕春水一城花。烟雨暗千家。</p>
+<p>寒食后，酒醒却咨嗟。休对故人思故国，且将新火试新茶。诗酒趁年华。</p>
+<hr>
+<p>极目不见故土，抬头却是同一片星空</p>
+<hr>
+<p>寻李白</p>
+<p>现代 余光中</p>
+<p>那一双傲慢的靴子至今还落在<br>高力士羞愤的手里，人却不见了<br>把满地的难民和伤兵<br>把胡马和羌笛交践的节奏<br>留给杜二去细细的苦吟<br>自从那年贺知章眼花了<br>认你做谪仙，便更加佯狂<br>用一只中了魔咒的小酒壶<br>把自己藏起来，连太太也寻不到你</p>
+<p>怨长安城小而壶中天长<br>在所有的诗里你都预言<br>会突然水遁，或许就在明天<br>只扁舟破浪，乱发当风<br>树敌如林，世人皆欲杀<br>肝硬化怎杀得死你？<br>酒入豪肠，七分酿成了月光<br>余下的三分啸成剑气<br>绣口一吐就半个盛唐<br>从开元到天宝，从洛阳到咸阳<br>冠盖满途车骑的嚣闹<br>不及千年后你的一首<br>水晶绝句轻叩我额头<br>当地一弹挑起的回音</p>
+<p>一贬世上已经够落魄<br>再放夜郎母乃太难堪<br>至今成谜是你的籍贯<br>陇西或山东，青莲乡或碎叶城<br>不如归去归哪个故乡？<br>凡你醉处，你说过，皆非他乡<br>失踪，是天才唯一的下场<br>身后事，究竟你遁向何处？<br>猿啼不住，杜二也苦劝你不住<br>一回头囚窗下竟已白头<br>七仙，五友，都救不了你了<br>匡山给雾锁了，无路可入<br>仍炉火示纯青，就半粒丹砂<br>怎追蹑葛洪袖里的流霞？</p>
+<p>樽中月影，或许那才是你故乡<br>常得你一生痴痴地仰望？<br>而无论出门向西哭，向东哭<br>长安却早已陷落<br>二十四万里的归程<br>也不必惊动大鹏了，也无须招鹤<br>只消把酒杯向半空一扔<br>便旋成一只霍霍的飞碟<br>诡绿的闪光愈转愈快<br>接你回传说里去</p>
+<hr>
+<p>往日不可谏，来者犹可追</p>
+<hr>
+<p>关山难越，谁悲失路之人。萍水相逢，尽是他乡之客。</p>
+<hr>
+<p>唐伯虎</p>
+<p>酒醒只在花前坐，酒醉还来花下眠</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>百度地图获取经纬度的方式</title>
+    <url>/2022/01/07/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E8%8E%B7%E5%8F%96%E7%BB%8F%E7%BA%AC%E5%BA%A6%E7%9A%84%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<h2 id="一、JS-API-ip定位"><a href="#一、JS-API-ip定位" class="headerlink" title="一、JS API ip定位"></a>一、JS API ip定位</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> loc = <span class="keyword">new</span> BMap.LocalCity();</span><br><span class="line">loc.get(<span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</span><br><span class="line">    cityName = result.name</span><br><span class="line">    map.centerAndZoom(result.center, <span class="number">12</span>);</span><br><span class="line">    map.panTo(result.center);</span><br><span class="line">    mk = <span class="keyword">new</span> BMap.Marker(result.center);</span><br><span class="line">    map.addOverlay(mk);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h2 id="二、Web-API-普通ip定位"><a href="#二、Web-API-普通ip定位" class="headerlink" title="二、Web API 普通ip定位"></a>二、Web API 普通ip定位</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&quot;GET&quot;</span>,</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&quot;https://api.map.baidu.com/location/ip?ak=u08X9I4Ix3q0iG7gaj1IeAxHfh9gcHtB&amp;coor=bd09ll&quot;</span>,</span><br><span class="line">    <span class="attr">dataType</span>: <span class="string">&quot;jsonp&quot;</span>,</span><br><span class="line">    <span class="attr">success</span>: <span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(result);</span><br><span class="line">        <span class="keyword">if</span>(result.status === <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">let</span> point = <span class="keyword">new</span> BMap.Point(result.content.point.x, result.content.point.y)</span><br><span class="line">            mk = <span class="keyword">new</span> BMap.Marker(point);</span><br><span class="line">            map.addOverlay(mk);</span><br><span class="line">            map.centerAndZoom(point, <span class="number">12</span>);</span><br><span class="line">            map.panTo(point);</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;请求失败&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="三、原生api获取经纬度，再转换成百度系坐标系"><a href="#三、原生api获取经纬度，再转换成百度系坐标系" class="headerlink" title="三、原生api获取经纬度，再转换成百度系坐标系"></a>三、原生api获取经纬度，再转换成百度系坐标系</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> geo = navigator.geolocation</span><br><span class="line">geo.getCurrentPosition(<span class="function">(<span class="params">position</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(position);</span><br><span class="line">    <span class="comment">// 原生api获取的经纬度</span></span><br><span class="line">    <span class="keyword">let</span> lng = position.coords.longitude</span><br><span class="line">    <span class="keyword">let</span> lat = position.coords.latitude</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 转换成百度系坐标在地图进行显示</span></span><br><span class="line">    <span class="keyword">let</span> ggPoint = <span class="keyword">new</span> BMap.Point(lng, lat)</span><br><span class="line">    <span class="keyword">let</span> convertor = <span class="keyword">new</span> BMap.Convertor();</span><br><span class="line">    <span class="comment">// 1代表GPS标准坐标（wgs84） 5代表百度地图采用的经纬度坐标（bd09ll）</span></span><br><span class="line">    convertor.translate([ggPoint], <span class="number">1</span>, <span class="number">5</span>, <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (data.status === <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(data.points[<span class="number">0</span>]);</span><br><span class="line">            mk = <span class="keyword">new</span> BMap.Marker(data.points[<span class="number">0</span>]);</span><br><span class="line">            map.addOverlay(mk);</span><br><span class="line">            map.centerAndZoom(data.points[<span class="number">0</span>], <span class="number">12</span>);</span><br><span class="line">            map.panTo(data.points[<span class="number">0</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;, <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// alert(&#x27;失败&#x27; + JSON.stringify(err))</span></span><br><span class="line">    <span class="built_in">console</span>.log(err)</span><br><span class="line">    <span class="keyword">if</span> (err.code == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> alert(<span class="string">&#x27;用户拒绝页面发起的地理位置&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (err.code == <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> alert(<span class="string">&#x27;无法获取当前位置&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (err.code == <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> alert(<span class="string">&#x27;超时&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> alert(<span class="string">&#x27;未知错误&#x27;</span>)</span><br><span class="line">&#125;, &#123;</span><br><span class="line">    <span class="attr">enableHighAcuracy</span>: <span class="literal">true</span>, <span class="comment">//  是否启动高精模式（布尔值）</span></span><br><span class="line">    <span class="attr">maximumAge</span>: <span class="number">0</span>, <span class="comment">// 设置定位缓存过期的时间（毫秒，0为禁用缓存）</span></span><br><span class="line">    <span class="attr">timeout</span>: <span class="number">10000</span>, <span class="comment">// 设置获取定位信息的时常 （超时触发ErrorCallback）</span></span><br><span class="line">&#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>除了上述方式，还有：</p>
+<h5 id="Web-API"><a href="#Web-API" class="headerlink" title="Web API"></a>Web API</h5><p>智能硬件定位（需要硬件设备，且麻烦）</p>
+<h5 id="JS-API"><a href="#JS-API" class="headerlink" title="JS API"></a>JS API</h5><p>浏览器定位<br>定位SDK辅助定位（项目需要同时有移动端）</p>
+<p>另外，浏览器普遍定位不准确的问题，并且各浏览器之间结果也有所不同（可能是个人问题），距离偏差也各有不同，移动端不存在这些问题。</p>
+]]></content>
+  </entry>
+</search>

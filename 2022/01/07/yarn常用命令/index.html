@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="yarn安装 npm i yarn -g 查看版本 Yarn -v">
@@ -103,6 +103,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -127,11 +128,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -205,7 +233,7 @@
 <h2 id="2、添加一个依赖"><a href="#2、添加一个依赖" class="headerlink" title="2、添加一个依赖"></a>2、添加一个依赖</h2><p>通过 yarn add 添加依赖会更新 package.json 以及 yarn.lock 文件</p>
 <p>1).开发环境</p>
 <p>yarn add  packageName  依赖会记录在 package.json 的 dependencies 下 开发环境</p>
-<p>yarn add <a href="mailto:&#x77;&#101;&#x62;&#x70;&#97;&#99;&#107;&#64;&#x32;&#46;&#51;&#x2e;&#51;">&#x77;&#101;&#x62;&#x70;&#97;&#99;&#107;&#64;&#x32;&#46;&#51;&#x2e;&#51;</a> # yarn –save 是 yarn 默认的，默认记录在 package.json 中</p>
+<p>yarn add <a href="mailto:&#119;&#101;&#x62;&#112;&#x61;&#x63;&#107;&#x40;&#x32;&#46;&#51;&#x2e;&#x33;">&#119;&#101;&#x62;&#112;&#x61;&#x63;&#107;&#x40;&#x32;&#46;&#51;&#x2e;&#x33;</a> # yarn –save 是 yarn 默认的，默认记录在 package.json 中</p>
 <p>2).生产环境</p>
 <p>yarn add  packageName  –dev 依赖会记录在 package.json 的 devDependencies 下生产环境</p>
 <p>yarn add webpack –dev # yarn 简写 -D</p>
@@ -347,8 +375,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">风满楼</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
-  </div>
 
         
 
@@ -384,6 +410,10 @@
   
 
 
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 
