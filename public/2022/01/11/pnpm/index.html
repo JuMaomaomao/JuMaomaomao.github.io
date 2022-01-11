@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|PingFang SC:300,300italic,400,400italic,700,700italic|Fira Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="什么是pnpm——个人不完全解读pnpm同npm和yarn一样，是一个包管理工具。pnpm的出现是为了解决node_modules占用过大的问题。当我们的电脑上存储了多个项目时，node_modules的占用就会很大，而使用pnpm，所有的依赖会被存储在内容可寻址的存储中，即存储在硬盘的同一位置，当我们需要安装的依赖在硬盘中已经存在，包里的文件会硬链接到这一位置而不是重新安装，这样多个项目可以共享">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pnpm">
+<meta property="og:url" content="http://example.com/2022/01/11/pnpm/index.html">
+<meta property="og:site_name" content="风满楼的Blog">
+<meta property="og:description" content="什么是pnpm——个人不完全解读pnpm同npm和yarn一样，是一个包管理工具。pnpm的出现是为了解决node_modules占用过大的问题。当我们的电脑上存储了多个项目时，node_modules的占用就会很大，而使用pnpm，所有的依赖会被存储在内容可寻址的存储中，即存储在硬盘的同一位置，当我们需要安装的依赖在硬盘中已经存在，包里的文件会硬链接到这一位置而不是重新安装，这样多个项目可以共享">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-01-11T07:39:45.000Z">
+<meta property="article:modified_time" content="2022-01-11T08:17:10.502Z">
+<meta property="article:author" content="风满楼">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/01/11/pnpm/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>pnpm | 风满楼的Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">风满楼的Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/11/pnpm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="风满楼">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="风满楼的Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          pnpm
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-01-11 15:39:45 / 修改时间：16:17:10" itemprop="dateCreated datePublished" datetime="2022-01-11T15:39:45+08:00">2022-01-11</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="什么是pnpm——个人不完全解读"><a href="#什么是pnpm——个人不完全解读" class="headerlink" title="什么是pnpm——个人不完全解读"></a>什么是pnpm——个人不完全解读</h2><p>pnpm同npm和yarn一样，是一个包管理工具。pnpm的出现是为了解决node_modules占用过大的问题。当我们的电脑上存储了多个项目时，node_modules的占用就会很大，而使用pnpm，所有的依赖会被存储在内容可寻址的存储中，即存储在硬盘的同一位置，当我们需要安装的依赖在硬盘中已经存在，包里的文件会硬链接到这一位置而不是重新安装，这样多个项目可以共享同一依赖</p>
+<span id="more"></span>
+<h2 id="pnpm常用命令"><a href="#pnpm常用命令" class="headerlink" title="pnpm常用命令"></a>pnpm常用命令</h2><h2 id="管理依赖"><a href="#管理依赖" class="headerlink" title="管理依赖"></a>管理依赖</h2><p>安装依赖<br><code>pnpm add sax</code>————保存到 dependencies<br><code>pnpm add -D sax</code>———保存到 devDependencies<br><code>pnpm add -O sax</code>———保存到 optionalDependencies<br><code>pnpm add sax@next</code>——-安装 next tag<br><code>pnpm add sax@3.0.0</code>——安装指定版本 3.0.0</p>
+<p>安装项目所有依赖<br><code>pnpm install</code></p>
+<p>根据指定的范围更新软件包的最新版本<br><code>pnpm update</code></p>
+<p>从 node_modules 和项目的 package.json 中移除包<br><code>pnpm remove</code></p>
+<p>使当前本地包可在系统范围内或其他位置访问<br><code>pnpm link &lt;dir&gt;</code><br><code>pnpm link --global</code><br><code>pnpm link --global &lt;pkg&gt;</code></p>
+<p>取消链接一个系统范围的package (相对于 pnpm link)<br><code>yarn unlink</code></p>
+<p>从另一个软件包管理器的 lock 文件生成 pnpm-lock.yaml<br><code>pnpm import</code></p>
+<p>重建一个package<br><code>pnpm rebuild</code></p>
+<p>移除不需要的软件包<br><code>pnpm prune</code></p>
+<h2 id="查看依赖"><a href="#查看依赖" class="headerlink" title="查看依赖"></a>查看依赖</h2><p>检查已安装包的已知安全问题<br><code>pnpm audit</code></p>
+<p>以一个树形结构输出所有的已安装package的版本及其依赖<br><code>pnpm list</code></p>
+<p>检查过期的 packages<br><code>pnpm outdated</code></p>
+<h2 id="运行脚本"><a href="#运行脚本" class="headerlink" title="运行脚本"></a>运行脚本</h2><p>运行一个在 package的 manifest 文件中定义的脚本<br><code>pnpm run</code></p>
+<p>运行在 package 的 scripts 对象中test 属性指定的任意的命令。<br><code>pnpm test</code></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/01/11/%E8%AF%AD%E4%B9%89%E5%8C%96%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E8%B0%83%E7%94%A8/" rel="prev" title="语义化函数声明调用">
+      <i class="fa fa-chevron-left"></i> 语义化函数声明调用
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFpnpm%E2%80%94%E2%80%94%E4%B8%AA%E4%BA%BA%E4%B8%8D%E5%AE%8C%E5%85%A8%E8%A7%A3%E8%AF%BB"><span class="nav-number">1.</span> <span class="nav-text">什么是pnpm——个人不完全解读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pnpm%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">pnpm常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%A1%E7%90%86%E4%BE%9D%E8%B5%96"><span class="nav-number">3.</span> <span class="nav-text">管理依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E4%BE%9D%E8%B5%96"><span class="nav-number">4.</span> <span class="nav-text">查看依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC"><span class="nav-number">5.</span> <span class="nav-text">运行脚本</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="风满楼"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">风满楼</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">风满楼</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
