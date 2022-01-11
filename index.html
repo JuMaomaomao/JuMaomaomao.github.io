@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta property="og:type" content="website">
@@ -99,7 +99,6 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
-        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -124,38 +123,11 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
-      </li>
   </ul>
 </nav>
 
 
 
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
-  </div>
-</div>
-
-    </div>
-  </div>
 
 </div>
     </header>
@@ -174,6 +146,138 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/11/pnpm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="风满楼">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="风满楼的Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/11/pnpm/" class="post-title-link" itemprop="url">pnpm</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-01-11 15:39:45 / 修改时间：16:17:10" itemprop="dateCreated datePublished" datetime="2022-01-11T15:39:45+08:00">2022-01-11</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="什么是pnpm——个人不完全解读"><a href="#什么是pnpm——个人不完全解读" class="headerlink" title="什么是pnpm——个人不完全解读"></a>什么是pnpm——个人不完全解读</h2><p>pnpm同npm和yarn一样，是一个包管理工具。pnpm的出现是为了解决node_modules占用过大的问题。当我们的电脑上存储了多个项目时，node_modules的占用就会很大，而使用pnpm，所有的依赖会被存储在内容可寻址的存储中，即存储在硬盘的同一位置，当我们需要安装的依赖在硬盘中已经存在，包里的文件会硬链接到这一位置而不是重新安装，这样多个项目可以共享同一依赖</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/01/11/pnpm/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/11/%E8%AF%AD%E4%B9%89%E5%8C%96%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E8%B0%83%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="风满楼">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="风满楼的Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/11/%E8%AF%AD%E4%B9%89%E5%8C%96%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E8%B0%83%E7%94%A8/" class="post-title-link" itemprop="url">语义化函数声明调用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-01-11 15:15:02 / 修改时间：15:21:16" itemprop="dateCreated datePublished" datetime="2022-01-11T15:15:02+08:00">2022-01-11</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>普通的声明和调用方式不易阅读，当别人第一眼看到你的代码可能并不知道<code>getItemList(343, 12)</code>中参数343和12是什么意思，但是利用解构赋值的方式声明和调用函数，一眼就能看出343是id而12是这件物品对应的价格，代码的可读性会提高很多。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/01/11/%E8%AF%AD%E4%B9%89%E5%8C%96%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E8%B0%83%E7%94%A8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -201,10 +305,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-01-07 17:40:28 / 修改时间：17:45:04" itemprop="dateCreated datePublished" datetime="2022-01-07T17:40:28+08:00">2022-01-07</time>
+              <time title="创建时间：2022-01-07 17:40:28" itemprop="dateCreated datePublished" datetime="2022-01-07T17:40:28+08:00">2022-01-07</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-01-11 15:37:30" itemprop="dateModified" datetime="2022-01-11T15:37:30+08:00">2022-01-11</time>
+              </span>
 
           
 
@@ -217,10 +327,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>yarn安装</p>
-<p>npm i yarn -g</p>
-<p>查看版本</p>
-<p>Yarn -v</p>
+          <p>yarn安装<br><code>npm i yarn -g</code></p>
+<p>查看版本<br><code>Yarn -v</code></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/01/07/yarn%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#more" rel="contents">
@@ -405,10 +513,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-01-07 15:45:28 / 修改时间：16:50:56" itemprop="dateCreated datePublished" datetime="2022-01-07T15:45:28+08:00">2022-01-07</time>
+              <time title="创建时间：2022-01-07 15:45:28" itemprop="dateCreated datePublished" datetime="2022-01-07T15:45:28+08:00">2022-01-07</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-01-11 15:22:36" itemprop="dateModified" datetime="2022-01-11T15:22:36+08:00">2022-01-11</time>
+              </span>
 
           
 
@@ -649,7 +763,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -718,10 +832,6 @@
   
 
 
-
-
-  
-<script src="/js/local-search.js"></script>
 
 
 

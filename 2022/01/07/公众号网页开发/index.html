@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="可能需要的一些资源：微信公众号开发文档：https:&#x2F;&#x2F;developers.weixin.qq.com&#x2F;doc&#x2F;offiaccount&#x2F;Getting_Started&#x2F;Overview.htmlJS-SDK：https:&#x2F;&#x2F;developers.weixin.qq.com&#x2F;doc&#x2F;offiaccount&#x2F;OA_Web_Apps&#x2F;JS-SDK.html接口在线调试：https:&#x2F;&#x2F;mp.weixi">
@@ -28,7 +28,7 @@
 <meta property="og:description" content="可能需要的一些资源：微信公众号开发文档：https:&#x2F;&#x2F;developers.weixin.qq.com&#x2F;doc&#x2F;offiaccount&#x2F;Getting_Started&#x2F;Overview.htmlJS-SDK：https:&#x2F;&#x2F;developers.weixin.qq.com&#x2F;doc&#x2F;offiaccount&#x2F;OA_Web_Apps&#x2F;JS-SDK.html接口在线调试：https:&#x2F;&#x2F;mp.weixi">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-01-07T07:45:28.000Z">
-<meta property="article:modified_time" content="2022-01-07T08:50:56.602Z">
+<meta property="article:modified_time" content="2022-01-11T07:22:36.841Z">
 <meta property="article:author" content="风满楼">
 <meta name="twitter:card" content="summary">
 
@@ -103,7 +103,6 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
-        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -128,38 +127,11 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
-      </li>
   </ul>
 </nav>
 
 
 
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
-  </div>
-</div>
-
-    </div>
-  </div>
 
 </div>
     </header>
@@ -205,10 +177,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-01-07 15:45:28 / 修改时间：16:50:56" itemprop="dateCreated datePublished" datetime="2022-01-07T15:45:28+08:00">2022-01-07</time>
+              <time title="创建时间：2022-01-07 15:45:28" itemprop="dateCreated datePublished" datetime="2022-01-07T15:45:28+08:00">2022-01-07</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-01-11 15:22:36" itemprop="dateModified" datetime="2022-01-11T15:22:36+08:00">2022-01-11</time>
+              </span>
 
           
 
@@ -231,7 +209,6 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// weui</span></span><br><span class="line">&lt;link rel=<span class="string">&quot;stylesheet&quot;</span> href=<span class="string">&quot;https://res.wx.qq.com/open/libs/weui/1.1.3/weui.min.css&quot;</span>&gt;</span><br><span class="line"><span class="comment">// weui.js</span></span><br><span class="line">&amp;lt;script type=<span class="string">&quot;text/javascript&quot;</span> src=<span class="string">&quot;https://res.wx.qq.com/open/libs/weuijs/1.1.4/weui.min.js&quot;</span>&amp;gt;&amp;lt;/script&amp;gt;</span><br></pre></td></tr></table></figure>
 <p>使用文档可以在weui的github里找到<br><strong>6、图像接口无法上传多张图片？</strong><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/wangliqiang1014/article/details/78071098">https://blog.csdn.net/wangliqiang1014/article/details/78071098</a><br><strong>7、不想使用微信提供的地图展示接口？/想在页面插入小地图？</strong><br>微信提供的wx.openLocation接口只能新打开一个页面全屏展示地图，我们可以引入并使用百度地图或者高德地图<br>我使用的是微信接口获取经纬度，再使用百度提供的接口进行经纬度转化，最后在页面上展示一个小的百度地图<br><strong>8、怎么使用JS-SDK？</strong><br>首先要在页面注入配置信息wx.config。这个前端也获取不了，可以让后端拿到之后通过接口传递到前端。<br>其次是wx.ready。wx.config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。<br>最后是wx.error。wx.config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。</p>
 <hr>
-<p>最后，这些是我写了一个公众号页面之后总结的一些方法和坑，可能以后还会用到，如果能帮到你那就更好了。很多东西暂时没想起来，想起来的时候再补充。不对的地方希望大家指正，共同进步，谢谢</p>
 
     </div>
 
@@ -328,7 +305,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -397,10 +374,6 @@
   
 
 
-
-
-  
-<script src="/js/local-search.js"></script>
 
 
 
